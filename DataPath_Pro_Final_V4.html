@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#080a10">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="DataPath Pro">
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiRGF0YVBhdGggUHJvIiwic2hvcnRfbmFtZSI6IkRhdGFQYXRoIiwiZGVzY3JpcHRpb24iOiJUdSByb2FkbWFwIGEgRGF0YSBTY2llbnRpc3QgZGUgw4lsaXRlIiwic3RhcnRfdXJsIjoiaW5kZXguaHRtbCIsImRpc3BsYXkiOiJzdGFuZGFsb25lIiwiYmFja2dyb3VuZF9jb2xvciI6IiMwODBhMTAiLCJ0aGVtZV9jb2xvciI6IiMwMGU1YTAiLCJpY29ucyI6W3sic3JjIjoiZGF0YTppbWFnZS9zdmcreG1sLDxzdmcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJyB2aWV3Qm94PScwIDAgMTAwIDEwMCc+PHRleHQgeT0nLjllbScgZm9udC1zaXplPSc5MCc+8J+TijwvdGV4dD48L3N2Zz4iLCJzaXplcyI6ImFueSIsInR5cGUiOiJpbWFnZS9zdmcreG1sIn1dfQ==">
+<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<title>DataPath Pro — Roadmap Data Scientist</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080a10;--bg2:#0e1018;--bg3:#151822;--bg4:#1c2030;--bg5:#242838;--brd:#252a3e;--brd2:#343a54;--t1:#eef0ff;--t2:#a4a8c8;--t3:#6a6f90;--t4:#464b66;--acc:#00e5a0;--acc2:#00c98b;--accD:rgba(0,229,160,.08);--p1:#f59e0b;--p1g:rgba(245,158,11,.08);--p2:#a78bfa;--p2g:rgba(167,139,250,.08);--green:#10b981;--gG:rgba(16,185,129,.1);--red:#f43f5e;--rG:rgba(244,63,94,.1);--blue:#3b82f6;--bG:rgba(59,130,246,.1);--orange:#f97316;--oG:rgba(249,115,22,.1);--cyan:#22d3ee;--cG:rgba(34,211,238,.1);--r:10px;--r2:14px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--t1);min-height:100vh;min-height:100dvh;overflow-x:hidden;-webkit-tap-highlight-color:transparent}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg2)}::-webkit-scrollbar-thumb{background:var(--brd2);border-radius:3px}
+.layout{display:flex;min-height:100vh;min-height:100dvh}
+.sidebar{width:230px;background:var(--bg2);border-right:1px solid var(--brd);position:fixed;top:0;left:0;bottom:0;z-index:200;display:flex;flex-direction:column;transition:transform .3s ease;overflow-y:auto}
+.sb-logo{padding:1.1rem;font-family:'Fraunces',serif;font-weight:800;font-size:1.2rem;display:flex;align-items:center;gap:.4rem;flex-shrink:0}
+.sb-logo span{background:linear-gradient(135deg,var(--acc),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sb-logo .dot{width:7px;height:7px;border-radius:50%;background:var(--acc);box-shadow:0 0 6px var(--acc);flex-shrink:0}
+.sb-nav{flex:1;padding:.4rem .5rem;overflow-y:auto}
+.sb-item{display:flex;align-items:center;gap:.6rem;padding:.55rem .75rem;border-radius:var(--r);font-size:.8rem;font-weight:500;color:var(--t3);cursor:pointer;transition:all .15s;margin-bottom:1px;border:1px solid transparent}
+.sb-item:hover{background:var(--bg3);color:var(--t2)}
+.sb-item.active{background:var(--accD);color:var(--acc);border-color:rgba(0,229,160,.1)}
+.sb-item .ic{font-size:.95rem;width:20px;text-align:center}
+.sb-d{height:1px;background:var(--brd);margin:.4rem .75rem}
+.sb-s{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--t4);padding:.4rem .75rem}
+.sb-ft{padding:.75rem;border-top:1px solid var(--brd);font-size:.7rem;flex-shrink:0}
+.sb-ms{display:flex;justify-content:space-between;margin-bottom:.2rem}.sb-ms .l{color:var(--t3)}.sb-ms .v{font-weight:700}
+.content{flex:1;margin-left:230px;min-height:100vh}
+.mob-h{display:none;position:sticky;top:0;z-index:150;background:rgba(8,10,16,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--brd);padding:0 1rem;height:50px;align-items:center;justify-content:space-between}
+.ham{background:none;border:none;color:var(--t2);font-size:1.3rem;cursor:pointer;padding:4px}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:190}.overlay.show{display:block}
+@media(max-width:860px){.sidebar{transform:translateX(-100%)}.sidebar.open{transform:translateX(0)}.mob-h{display:flex}.content{margin-left:0}}
+.view{display:none;padding:1.5rem;max-width:1100px;margin:0 auto;animation:fu .2s ease}.view.active{display:block}
+@keyframes fu{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.pt{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:800;margin-bottom:.2rem}
+.ps{font-size:.82rem;color:var(--t3);margin-bottom:1.25rem}
+.sh{display:flex;align-items:center;justify-content:space-between;margin:1.5rem 0 .75rem;flex-wrap:wrap;gap:.5rem}
+.sh h2{font-family:'Fraunces',serif;font-size:1.05rem}
+.card{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r2);padding:1.1rem;transition:border-color .2s}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem}
+@media(max-width:900px){.g4{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.g2,.g4{grid-template-columns:1fr}}
+.tag{display:inline-block;font-size:.64rem;font-weight:700;padding:.13rem .45rem;border-radius:3px;text-transform:uppercase;letter-spacing:.3px}
+.tp1{background:var(--p1g);color:var(--p1)}.tp2{background:var(--p2g);color:var(--p2)}.tc{background:var(--cG);color:var(--cyan)}
+.btn{display:inline-flex;align-items:center;gap:.35rem;padding:.5rem .9rem;border:none;border-radius:var(--r);font-family:inherit;font-size:.78rem;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-a{background:linear-gradient(135deg,var(--acc2),var(--acc));color:var(--bg)}
+.btn-a:hover{transform:translateY(-1px)}
+.btn-g{background:transparent;color:var(--t3);border:1px solid var(--brd)}
+.btn-g:hover{border-color:var(--brd2);color:var(--t2)}
+.btn-s{padding:.3rem .55rem;font-size:.72rem}
+.btn-r{background:var(--rG);color:var(--red);border:1px solid rgba(244,63,94,.1)}
+.btn-w{background:var(--oG);color:var(--orange);border:1px solid rgba(249,115,22,.1)}
+.fg{margin-bottom:.8rem}.fl{display:block;font-size:.72rem;font-weight:600;color:var(--t3);margin-bottom:.25rem}
+.fi,.fsel,.fta{width:100%;padding:.5rem .75rem;background:var(--bg);border:1px solid var(--brd);border-radius:var(--r);color:var(--t1);font-family:inherit;font-size:.82rem}
+.fi:focus,.fsel:focus,.fta:focus{outline:none;border-color:var(--acc)}.fta{resize:vertical;min-height:65px}
+.mbg{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.55);backdrop-filter:blur(5px);align-items:center;justify-content:center;padding:.75rem}
+.mbg.open{display:flex}
+.mdl{background:var(--bg3);border:1px solid var(--brd);border-radius:14px;width:100%;max-width:520px;max-height:85vh;overflow-y:auto}
+.mdl-h{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.2rem;border-bottom:1px solid var(--brd)}
+.mdl-h h3{font-family:'Fraunces',serif;font-size:.95rem}
+.mdl-x{background:none;border:none;color:var(--t3);font-size:1.2rem;cursor:pointer}
+.mdl-b{padding:1.2rem}.mdl-f{padding:.7rem 1.2rem;border-top:1px solid var(--brd);display:flex;justify-content:flex-end;gap:.5rem}
+.pbar-w{height:5px;background:var(--bg);border-radius:3px;overflow:hidden}
+.pbar{height:100%;border-radius:3px;transition:width .5s}
+.sc .si{font-size:1.3rem;margin-bottom:.4rem}.sc .sv{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;line-height:1}.sc .sl{font-size:.7rem;color:var(--t3);margin-top:.2rem}
+.hm{display:flex;gap:2px;overflow-x:auto;padding:.25rem 0}.hm-c{display:flex;flex-direction:column;gap:2px}.hm-d{width:11px;height:11px;border-radius:2px;background:var(--bg4)}.hm-d.l1{background:rgba(0,229,160,.2)}.hm-d.l2{background:rgba(0,229,160,.4)}.hm-d.l3{background:rgba(0,229,160,.6)}.hm-d.l4{background:rgba(0,229,160,.85)}
+.bg-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.6rem}.bg-c{text-align:center;padding:.75rem .5rem;border-radius:var(--r2);border:1px solid var(--brd);background:var(--bg3)}.bg-c.earned{border-color:var(--acc);box-shadow:0 0 12px rgba(0,229,160,.06)}.bg-i{font-size:1.7rem;margin-bottom:.3rem;filter:grayscale(1);opacity:.2}.bg-c.earned .bg-i{filter:none;opacity:1}.bg-n{font-size:.7rem;font-weight:600}.bg-dd{font-size:.6rem;color:var(--t3);margin-top:.08rem}
+.pm-t{font-family:'Fraunces',serif;font-size:3.5rem;font-weight:800;text-align:center;font-variant-numeric:tabular-nums}.pm-l{font-size:.8rem;color:var(--t3);text-align:center;margin:.25rem 0 .8rem}.pm-dots{display:flex;gap:.3rem;justify-content:center;margin-top:.6rem}.pm-dot{width:8px;height:8px;border-radius:50%;background:var(--brd)}.pm-dot.dn{background:var(--acc)}.pm-dot.ac{background:var(--p1)}
+.fc-w{perspective:1000px;cursor:pointer;max-width:440px;margin:0 auto}.fc-cd{width:100%;min-height:240px;position:relative;transform-style:preserve-3d;transition:transform .45s}.fc-cd.fl{transform:rotateY(180deg)}.fc-f{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;padding:1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}.fc-fr{background:linear-gradient(135deg,var(--bg4),var(--bg3));border:1px solid var(--brd2)}.fc-bk{background:linear-gradient(135deg,#0d2818,#0a1f14);border:1px solid rgba(0,229,160,.15);transform:rotateY(180deg)}.fc-q{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:700;line-height:1.45;margin-top:.6rem}.fc-a{font-size:.85rem;line-height:1.5;color:var(--t2)}
+.qz-q{font-family:'Fraunces',serif;font-size:1rem;font-weight:700;margin-bottom:1rem;line-height:1.45}.qz-o{display:flex;flex-direction:column;gap:.45rem}.qz-opt{padding:.65rem .9rem;border:1px solid var(--brd);border-radius:var(--r);cursor:pointer;font-size:.82rem;transition:all .15s;display:flex;align-items:center;gap:.6rem}.qz-opt:hover{border-color:var(--brd2);background:var(--bg4)}.qz-opt .lt{width:24px;height:24px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;flex-shrink:0}.qz-opt.ok{border-color:var(--green);background:var(--gG)}.qz-opt.ok .lt{background:var(--green);color:#fff}.qz-opt.wr{border-color:var(--red);background:var(--rG)}.qz-opt.wr .lt{background:var(--red);color:#fff}.qz-opt.dis{pointer-events:none}.qz-ex{margin-top:.75rem;padding:.75rem;background:var(--bg);border-radius:var(--r);font-size:.8rem;color:var(--t2);line-height:1.45}.qz-pg{display:flex;gap:2px;margin-bottom:1rem}.qz-pip{flex:1;height:3px;border-radius:2px;background:var(--brd)}.qz-pip.dn{background:var(--green)}.qz-pip.wr{background:var(--red)}.qz-pip.cu{background:var(--acc)}
+.mb{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r2);margin-bottom:.65rem;overflow:hidden}.mb-h{display:flex;align-items:center;gap:.65rem;padding:.9rem 1.05rem;cursor:pointer;user-select:none}.mb-cl{width:4px;height:32px;border-radius:2px;flex-shrink:0}.mb-i{flex:1}.mb-t{font-weight:700;font-size:.88rem;margin-bottom:.08rem}.mb-m{font-size:.7rem;color:var(--t3)}.mb-rn{width:36px;height:36px;position:relative;flex-shrink:0}.mb-rn svg{transform:rotate(-90deg)}.mb-rn .rp{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:700}.mb-cv{color:var(--t3);transition:transform .2s;font-size:.8rem}.mb.open .mb-cv{transform:rotate(180deg)}.mb-bd{display:none;border-top:1px solid var(--brd)}.mb.open .mb-bd{display:block}
+.sg{border-bottom:1px solid var(--brd)}.sg:last-child{border-bottom:none}.sg-h{display:flex;align-items:center;gap:.45rem;padding:.55rem 1.05rem .55rem 1.5rem;cursor:pointer;background:rgba(255,255,255,.01);user-select:none}.sg-h:hover{background:rgba(255,255,255,.02)}.sg-cv{font-size:.6rem;color:var(--t3);transition:transform .2s;flex-shrink:0}.sg.open .sg-cv{transform:rotate(90deg)}.sg-n{font-weight:600;font-size:.78rem;flex:1}.sg-ct{font-size:.65rem;color:var(--t3)}.sg-bd{display:none}.sg.open .sg-bd{display:block}
+.ls{display:flex;align-items:center;gap:.5rem;padding:.4rem 1.05rem .4rem 2.2rem;cursor:pointer;transition:background .1s}.ls:hover{background:rgba(255,255,255,.015)}.ls-ck{width:15px;height:15px;border-radius:50%;border:2px solid var(--brd2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.45rem;color:transparent;transition:all .2s}.ls.done .ls-ck{background:var(--green);border-color:var(--green);color:#fff}.ls-nm{flex:1;font-size:.78rem;color:var(--t2)}.ls.done .ls-nm{color:var(--t4);text-decoration:line-through}.ls-bg{font-size:.58rem;padding:.08rem .3rem;border-radius:3px;flex-shrink:0;font-weight:600}.ls-bg.video{background:var(--cG);color:var(--cyan)}.ls-bg.project{background:var(--p1g);color:var(--p1)}.ls-bg.math{background:var(--rG);color:var(--red)}.ls-bg.resource{background:var(--p2g);color:var(--p2)}.ls-bg.checkpoint{background:var(--gG);color:var(--green)}.ls-nb{background:none;border:none;color:var(--t4);cursor:pointer;font-size:.75rem;padding:1px;flex-shrink:0}.ls-nb:hover{color:var(--acc)}.ls-nb.has{color:var(--p1)}
+.res-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:.65rem}.res-c{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r);padding:.8rem}.res-c h4{font-size:.82rem;font-weight:600;margin:.2rem 0 .12rem}.res-c p{font-size:.7rem;color:var(--t3);line-height:1.35}.rcp{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px;padding:.08rem .35rem;border-radius:3px;display:inline-block}.rc-u{background:rgba(168,85,247,.08);color:#c084fc}.rc-y{background:rgba(239,68,68,.06);color:#f87171}.rc-co{background:rgba(59,130,246,.06);color:#60a5fa}.rc-k{background:rgba(34,211,238,.06);color:var(--cyan)}.rc-o{background:var(--p1g);color:var(--p1)}
+.pj{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r2);padding:1.15rem;margin-bottom:.65rem;position:relative;overflow:hidden;padding-left:1.4rem}.pj::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%}.pj.pp1::before{background:var(--p1)}.pj.pp2::before{background:var(--p2)}.pj h3{font-family:'Fraunces',serif;font-size:.95rem;margin:.3rem 0 .2rem}.pj .pd{font-size:.78rem;color:var(--t2);line-height:1.4;margin-bottom:.65rem}.pj-tl{display:flex;flex-wrap:wrap;gap:.2rem;margin-bottom:.65rem}.pj-t{font-size:.64rem;padding:.08rem .35rem;border-radius:3px;background:var(--bg);border:1px solid var(--brd);color:var(--t2)}.pj-dl{list-style:none}.pj-dl li{font-size:.75rem;color:var(--t2);padding:.18rem 0 .18rem .9rem;position:relative}.pj-dl li::before{content:'▸';position:absolute;left:0;color:var(--acc);font-weight:700}
+.jt{width:100%;border-collapse:collapse}.jt th{text-align:left;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.3px;color:var(--t4);padding:.5rem .55rem;border-bottom:1px solid var(--brd)}.jt td{padding:.55rem;border-bottom:1px solid var(--brd);font-size:.8rem}.jt-s{font-size:.66rem;font-weight:700;padding:.15rem .4rem;border-radius:3px}.jt-ap{background:var(--bG);color:var(--blue)}.jt-in{background:var(--oG);color:var(--orange)}.jt-of{background:var(--gG);color:var(--green)}.jt-re{background:var(--rG);color:var(--red)}.jt-pe{background:var(--p2g);color:var(--p2)}
+.wk{display:grid;grid-template-columns:repeat(7,1fr);gap:.35rem}@media(max-width:768px){.wk{grid-template-columns:repeat(4,1fr)}}.dy{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r);min-height:190px}.dy-h{padding:.5rem;text-align:center;border-bottom:1px solid var(--brd);font-weight:600;font-size:.72rem}.dy-h.today{color:var(--acc)}.dy-b{padding:.3rem;display:flex;flex-direction:column;gap:.25rem}.sbl{padding:.35rem .45rem;border-radius:4px;font-size:.65rem;border-left:3px solid;position:relative}.sbl .st{font-weight:700;margin-bottom:.05rem}.sbl .sl{color:var(--t3)}.sbl .sx{position:absolute;top:1px;right:3px;background:none;border:none;color:var(--t3);cursor:pointer;font-size:.65rem;display:none}.sbl:hover .sx{display:block}
+.backup-bar{background:var(--bg3);border:1px solid var(--brd);border-radius:var(--r);padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;margin-bottom:1.25rem}
+.backup-bar .info{font-size:.78rem;color:var(--t3)}
+.backup-bar .info b{color:var(--t1)}
+</style>
+</head>
+<body>
+<div class="overlay" id="ov" onclick="tgSb()"></div>
+<div class="mob-h"><button class="ham" onclick="tgSb()">☰</button><div style="font-family:'Fraunces',serif;font-weight:800;font-size:1.05rem"><span style="background:linear-gradient(135deg,var(--acc),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent">DataPath</span> Pro</div><span style="font-size:.75rem;color:var(--acc);font-weight:700" id="mP">0%</span></div>
+<div class="layout">
+<aside class="sidebar" id="sb">
+<div class="sb-logo"><div class="dot"></div><span>DataPath</span>&thinsp;Pro</div>
+<nav class="sb-nav">
+<div class="sb-s">Principal</div>
+<div class="sb-item active" data-v="dash"><span class="ic">📊</span>Dashboard</div>
+<div class="sb-item" data-v="road"><span class="ic">🗺️</span>Roadmap</div>
+<div class="sb-item" data-v="res"><span class="ic">📚</span>Recursos</div>
+<div class="sb-item" data-v="proj"><span class="ic">🏗️</span>Proyectos</div>
+<div class="sb-d"></div>
+<div class="sb-s">Estudio</div>
+<div class="sb-item" data-v="pomo"><span class="ic">🍅</span>Pomodoro</div>
+<div class="sb-item" data-v="fc"><span class="ic">🧠</span>Flashcards</div>
+<div class="sb-item" data-v="quiz"><span class="ic">✍️</span>Quiz</div>
+<div class="sb-d"></div>
+<div class="sb-s">Carrera</div>
+<div class="sb-item" data-v="intv"><span class="ic">🎯</span>Entrevistas</div>
+<div class="sb-item" data-v="jobs"><span class="ic">💼</span>Aplicaciones</div>
+<div class="sb-d"></div>
+<div class="sb-s">Progreso</div>
+<div class="sb-item" data-v="sched"><span class="ic">🗓️</span>Horario</div>
+<div class="sb-item" data-v="badges"><span class="ic">🏅</span>Badges</div>
+<div class="sb-item" data-v="backup"><span class="ic">💾</span>Respaldo</div>
+</nav>
+<div class="sb-ft"><div class="sb-ms"><span class="l">Progreso</span><span class="v" id="sP">0%</span></div><div class="sb-ms"><span class="l">Racha</span><span class="v" id="sS">🔥 0</span></div><div class="sb-ms"><span class="l">Pomodoros</span><span class="v" id="sPm">🍅 0</span></div></div>
+</aside>
+<div class="content">
+<div class="view active" id="v-dash"></div><div class="view" id="v-road"></div><div class="view" id="v-res"></div><div class="view" id="v-proj"></div><div class="view" id="v-pomo"></div><div class="view" id="v-fc"></div><div class="view" id="v-quiz"></div><div class="view" id="v-intv"></div><div class="view" id="v-jobs"></div><div class="view" id="v-sched"></div><div class="view" id="v-badges"></div><div class="view" id="v-backup"></div>
+</div></div>
+<div class="mbg" id="schM"><div class="mdl"><div class="mdl-h"><h3>Agregar Bloque</h3><button class="mdl-x" onclick="cM('schM')">×</button></div><div class="mdl-b"><div class="fg"><label class="fl">Día</label><select class="fsel" id="sD"><option value="0">Lun</option><option value="1">Mar</option><option value="2">Mié</option><option value="3">Jue</option><option value="4">Vie</option><option value="5">Sáb</option><option value="6">Dom</option></select></div><div class="fg"><label class="fl">Inicio</label><input type="time" class="fi" id="sSt" value="07:00"></div><div class="fg"><label class="fl">Fin</label><input type="time" class="fi" id="sEn" value="09:00"></div><div class="fg"><label class="fl">Módulo</label><select class="fsel" id="sMd"></select></div><div class="fg"><label class="fl">Nota</label><input class="fi" id="sNt"></div></div><div class="mdl-f"><button class="btn btn-g" onclick="cM('schM')">Cancelar</button><button class="btn btn-a" onclick="savSch()">Guardar</button></div></div></div>
+<div class="mbg" id="jobM"><div class="mdl"><div class="mdl-h"><h3>Nueva Aplicación</h3><button class="mdl-x" onclick="cM('jobM')">×</button></div><div class="mdl-b"><div class="fg"><label class="fl">Empresa</label><input class="fi" id="jC"></div><div class="fg"><label class="fl">Puesto</label><input class="fi" id="jR"></div><div class="fg"><label class="fl">Estado</label><select class="fsel" id="jSt"><option value="applied">Aplicada</option><option value="interview">Entrevista</option><option value="offer">Oferta</option><option value="rejected">Rechazada</option><option value="pending">En espera</option></select></div><div class="fg"><label class="fl">Notas</label><textarea class="fta" id="jN"></textarea></div></div><div class="mdl-f"><button class="btn btn-g" onclick="cM('jobM')">Cancelar</button><button class="btn btn-a" onclick="savJob()">Guardar</button></div></div></div>
+<div class="mbg" id="ntM"><div class="mdl"><div class="mdl-h"><h3>📝 Notas</h3><button class="mdl-x" onclick="cM('ntM')">×</button></div><div class="mdl-b"><p style="font-weight:600;font-size:.82rem;margin-bottom:.35rem" id="ntT"></p><textarea class="fta" id="ntTx" style="min-height:120px" placeholder="Tus apuntes..."></textarea></div><div class="mdl-f"><button class="btn btn-g" onclick="cM('ntM')">Cancelar</button><button class="btn btn-a" onclick="savNt()">Guardar</button></div></div></div>
+
+
+<script>
+const RM=[{"id":"m01","ph":1,"cl":"#f59e0b","nm":"Excel Avanzado","dr":"Mes 1","ic":"📗","ss":[{"n":"Fórmulas Avanzadas","l":["BUSCARV, BUSCARX profesional","INDICE + COINCIDIR","SI.CONJUNTO, SI.ERROR, SUMAPRODUCTO","Fórmulas dinámicas: FILTRAR, ORDENAR, UNICOS","Funciones de texto y fecha","Práctica: 20 ejercicios|p","Regex: patrones de texto en Excel","Análisis con Analysis ToolPak"]},{"n":"Tablas Dinámicas","l":["Tablas dinámicas desde cero","Campos y elementos calculados","Agrupación y slicers","Tablas dinámicas con múltiples fuentes"]},{"n":"Power Query (ETL)","l":["Conectar fuentes múltiples","Transformaciones: dividir, pivotar","Parámetros y funciones M","Limpieza automatizada","Pipeline ETL completo|p"]},{"n":"Power Pivot","l":["Introducción a Power Pivot","Modelo relacional 3+ tablas","Medidas DAX básicas","Relaciones y cardinalidad"]},{"n":"Formatos de Datos","l":["JSON: estructura y lectura","XML: estructura básica","CSV vs TSV vs delimitados","Tabular Data: conceptos"]},{"n":"VBA y Macros","l":["Grabadora de macros","Variables, bucles, condicionales","Automatizar reportes","UserForms básicas"]},{"n":"🏗️ PROYECTO","l":["Dashboard Financiero interactivo|p","Limpieza Power Query documentada|p","Modelo Power Pivot 3+ tablas|p","README con hallazgos|p"]}]},{"id":"m02","ph":1,"cl":"#ef4444","nm":"Estadística Descriptiva","dr":"Mes 2","ic":"📊","ss":[{"n":"Medidas de Tendencia Central","l":["Media aritmética, ponderada, geométrica|m","Mediana — robustez ante outliers|m","Moda — datos categóricos|m","Cuándo usar cada una|m"]},{"n":"Medidas de Dispersión","l":["Rango y rango intercuartílico (IQR)|m","Varianza poblacional vs muestral|m","Desviación estándar — interpretación|m","Coeficiente de variación|m"]},{"n":"Distribución de Datos","l":["Asimetría (skewness)|m","Curtosis (leptocúrtica, mesocúrtica, platicúrtica)|m","Cuartiles y percentiles|m","Z-scores — estandarización|m"]},{"n":"Distribuciones de Probabilidad","l":["Distribución Normal (68-95-99.7)|m","Distribución Binomial|m","Distribución de Poisson|m","Distribución Uniforme|m","Distribución Exponencial|m"]},{"n":"Correlación","l":["Correlación de Pearson|m","Correlación de Spearman|m","Covarianza|m","Correlación ≠ Causalidad|m"]},{"n":"EDA Completo","l":["Exploratory Data Analysis: metodología","Elegir dataset (UCI Repository, Kaggle)","CDF: Función de Distribución Acumulada|m","PDF: Función de Densidad de Probabilidad|m","Factor Analysis|m","Monte Carlo Method: simulación|m"]},{"n":"Visualización Estadística","l":["Histogramas e interpretación","Box plots y detección de outliers","Scatter plots y tendencias","Heatmaps de correlación"]},{"n":"🏗️ PROYECTO","l":["Análisis estadístico completo de dataset real|p","Reporte con visualizaciones e interpretación|p"]}]},{"id":"m03","ph":1,"cl":"#3b82f6","nm":"SQL para Análisis","dr":"Meses 3–4","ic":"🗄️","ss":[{"n":"Fundamentos","l":["SELECT, WHERE, ORDER BY, LIMIT","Operadores: LIKE, IN, BETWEEN, IS NULL","JOINs: INNER, LEFT, RIGHT, FULL, CROSS","GROUP BY + agregación","HAVING vs WHERE","Práctica: 30 ejercicios|p"]},{"n":"SQL Intermedio","l":["CASE WHEN","COALESCE, funciones de cadena","Funciones de fecha (DATE_TRUNC, EXTRACT)","Subconsultas en WHERE, FROM, SELECT","Subconsultas correlacionadas"]},{"n":"Window Functions","l":["ROW_NUMBER, RANK, DENSE_RANK","LEAD y LAG","SUM/AVG OVER (PARTITION BY)","NTILE para segmentación","Frames: ROWS BETWEEN","15 problemas Window Functions|p"]},{"n":"CTEs y Optimización","l":["Common Table Expressions (WITH)","CTEs recursivos","EXPLAIN/ANALYZE e índices","Esquema estrella y copo de nieve","Normalización 1FN-3FN"]},{"n":"MongoDB / NoSQL","l":["Diferencias SQL vs NoSQL","Documentos, colecciones, BSON","CRUD en MongoDB","Aggregation Pipeline","Cuándo usar SQL vs NoSQL"]},{"n":"🏗️ PROYECTO","l":["15+ consultas de complejidad creciente|p","Análisis de cohortes|p","Análisis RFM completo|p","Documento de hallazgos de negocio|p"]}]},{"id":"m04","ph":1,"cl":"#10b981","nm":"Power BI (100%)","dr":"Meses 5–6","ic":"📈","ss":[{"n":"Fundamentos Power BI","l":["Instalación, interfaz, workspace","Conectar fuentes de datos","Power Query en Power BI: ETL completo","Tipos de datos y transformaciones"]},{"n":"Modelado de Datos","l":["Modelo de datos: relaciones y cardinalidad","Esquema estrella: hechos + dimensiones","Esquema copo de nieve","Tabla calendario (date table)","Roles y direccionalidad de relaciones"]},{"n":"DAX Fundamentos","l":["Medidas vs columnas calculadas","Contexto de fila vs contexto de filtro","SUM, COUNT, AVERAGE, DISTINCTCOUNT","CALCULATE — la función más importante","FILTER, ALL, ALLEXCEPT","Variables VAR/RETURN"]},{"n":"DAX Avanzado","l":["Iteradores: SUMX, AVERAGEX, COUNTX","Time Intelligence: YoY, MoM, YTD, MTD","RANKX, TOPN","SWITCH para lógica compleja","SELECTEDVALUE, HASONEVALUE","Tablas calculadas con SUMMARIZE, ADDCOLUMNS","Práctica: 25 medidas DAX|p"]},{"n":"Visualización Profesional","l":["Gráficos nativos: cuándo usar cada uno","Custom visuals del marketplace","Formato condicional avanzado","Tooltips personalizados","Small multiples"]},{"n":"Dashboards Avanzados","l":["Navegación multi-página","Bookmarks y selección","Drill-through y drill-down","Botones y acciones","Parámetros What-If"]},{"n":"Seguridad y Publicación","l":["Row-Level Security (RLS)","Workspaces y apps","Publicación en Power BI Service","Scheduled refresh","Dataflows"]},{"n":"🏗️ PROYECTO","l":["Modelo estrella (1 hechos + 4 dimensiones)|p","15+ medidas DAX con time intelligence|p","Dashboard 4+ páginas con drill-through|p","RLS implementado|p","Publicado con documentación|p"]}]},{"id":"m04b","ph":1,"cl":"#22c55e","nm":"Data Storytelling","dr":"Mes 7","ic":"📖","ss":[{"n":"Principios de Storytelling","l":["Estructura narrativa: setup, conflicto, resolución","Principios de Gestalt para visualización","Pre-attentive attributes","Ratio dato-tinta de Tufte|m","Selección del gráfico correcto","Color theory para datos"]},{"n":"Comunicación con Stakeholders","l":["Audiencia: técnica vs ejecutiva vs negocio","Pirámide de Minto: conclusión primero","Dashboards ejecutivos vs operativos","Presentaciones de datos efectivas","Documentación técnica clara"]},{"n":"🏗️ PROYECTO","l":["Presentación ejecutiva de análisis|p","3 visualizaciones con narrativa|p","One-pager de insights para CEO|p"]}]},{"id":"m05","ph":2,"cl":"#a78bfa","nm":"Python Core","dr":"Mes 7","ic":"🐍","ss":[{"n":"Fundamentos","l":["Variables, tipos de datos, operadores","Strings: métodos, f-strings, slicing","Listas, tuplas, diccionarios, sets","Condicionales y bucles","Funciones: *args, **kwargs, lambda","Listas, tuplas, diccionarios (profundización)"]},{"n":"Python Intermedio","l":["List/dict comprehensions","Generadores y yield","Decoradores y closures","Programación Orientada a Objetos completa","Manejo de errores y context managers","Type hints y docstrings"]},{"n":"Entorno Profesional","l":["Entornos virtuales (venv/conda)","pip y gestión de dependencias","Estructura de proyectos","Jupyter Notebooks vs scripts","Debugging y profiling"]},{"n":"Data Structures & Algorithms","l":["Complejidad temporal (Big O)|m","Listas enlazadas, pilas, colas|m","Árboles y grafos (conceptual)|m","Búsqueda y ordenamiento|m","Diccionarios y hash tables|m"]}]},{"id":"m06","ph":2,"cl":"#06b6d4","nm":"Git y GitHub","dr":"Mes 7 (paralelo)","ic":"🔀","ss":[{"n":"Fundamentos Git","l":["init, add, commit, status, log","Branching y merging","Resolución de conflictos",".gitignore y buenas prácticas"]},{"n":"GitHub Profesional","l":["Push, pull, clone, fork","Pull Requests y code review","Issues y project boards","GitHub Actions (CI/CD intro)","GitHub Pages para portafolio","README profesional con badges"]}]},{"id":"m07","ph":2,"cl":"#f59e0b","nm":"NumPy","dr":"Mes 8","ic":"🔢","ss":[{"n":"Arrays y Operaciones","l":["Arrays N-dimensionales","Vectorización vs loops","Broadcasting — reglas y ejemplos","Indexación avanzada y fancy indexing"]},{"n":"Álgebra Lineal con NumPy","l":["dot, matmul, inv, det|m","Autovalores y autovectores|m","Descomposición SVD|m","Normas de vectores y matrices|m"]},{"n":"Random y Simulación","l":["Distribuciones aleatorias","Simulación Monte Carlo|p","Seeds y reproducibilidad"]}]},{"id":"m08","ph":2,"cl":"#ec4899","nm":"Pandas","dr":"Meses 8–9","ic":"🐼","ss":[{"n":"Fundamentos Pandas","l":["Series y DataFrames","Lectura multi-fuente (CSV, Excel, SQL, JSON, Parquet)","Selección: loc, iloc, query","Filtrado y ordenamiento"]},{"n":"Transformación de Datos","l":["Merge, join, concat — estrategias","GroupBy: agg, transform, apply, pipe","Reshaping: pivot_table, melt, stack/unstack","Datetime y operaciones temporales","Strings con .str accessor y regex"]},{"n":"Pandas Avanzado","l":["Funciones ventana (rolling, expanding)","MultiIndex","Optimización de memoria (dtypes, categoricals)","Method chaining idiomático","Pandas con SQL (read_sql, to_sql)"]},{"n":"🏗️ PROYECTO","l":["Pipeline de limpieza completo en Pandas|p","10 transformaciones documentadas|p"]}]},{"id":"m09","ph":2,"cl":"#14b8a6","nm":"Visualización con Python","dr":"Mes 9","ic":"📉","ss":[{"n":"Matplotlib","l":["Figure, Axes, subplots","Customización completa (colores, fuentes, leyendas)","Tipos: line, bar, scatter, hist, pie","Anotaciones y estilos"]},{"n":"Seaborn","l":["Gráficos estadísticos: kde, violin, box","Pair plots y heatmaps","FacetGrid y catplot","Temas y paletas"]},{"n":"Plotly","l":["Gráficos interactivos","Dash para dashboards web","Mapas y gráficos 3D"]},{"n":"🏗️ PROYECTO","l":["15 gráficos publicación-ready|p","Galería de visualizaciones en GitHub|p"]},{"n":"Visualización Avanzada","l":["Tree Maps y Sunburst charts","Spatial Charts y mapas geográficos","Timeline visualizations","D3.js: conceptos y uso con Python","Tableau (introducción rápida)","Survey Plots y Small Multiples","Uni, Bi & Multivariate Visualization"]}]},{"id":"m10","ph":2,"cl":"#8b5cf6","nm":"Web Scraping","dr":"Mes 9 (paralelo)","ic":"🕷️","ss":[{"n":"Scraping con Python","l":["Requests y HTTP basics","BeautifulSoup: parsing HTML","Selectores CSS y XPath","Manejo de paginación y headers","Selenium para sitios dinámicos"]},{"n":"APIs","l":["REST APIs: GET, POST, PUT, DELETE","Autenticación (API keys, OAuth)","JSON parsing","Rate limiting y buenas prácticas"]},{"n":"🏗️ PROYECTO","l":["Scraper de datos para análisis|p","Pipeline: scrape → limpiar → analizar|p"]}]},{"id":"m11","ph":3,"cl":"#ef4444","nm":"Álgebra Lineal","dr":"Mes 10","ic":"📐","ss":[{"n":"Vectores","l":["Operaciones: suma, escalar, producto punto|m","Normas (L1, L2, infinito)|m","Proyecciones|m","Independencia lineal|m"]},{"n":"Matrices","l":["Operaciones: suma, multiplicación, transpuesta|m","Determinantes e inversas|m","Rango de una matriz|m","Matrices especiales: identidad, diagonal, simétrica|m"]},{"n":"Espacios y Transformaciones","l":["Espacios vectoriales y subespacios|m","Transformaciones lineales|m","Cambio de base|m","Sistemas de ecuaciones lineales|m"]},{"n":"Descomposiciones","l":["Autovalores y autovectores — geométrica|m","Diagonalización|m","SVD — derivación y aplicaciones|m","SVD → PCA conexión|m","3Blue1Brown: Essence of Linear Algebra|r"]}]},{"id":"m12","ph":3,"cl":"#f97316","nm":"Cálculo Multivariable","dr":"Mes 10","ic":"∫","ss":[{"n":"Derivadas","l":["Derivadas parciales|m","Gradiente — dirección de máximo crecimiento|m","Jacobiana|m","Hessiana y puntos críticos|m"]},{"n":"Regla de la Cadena","l":["Chain rule — base de backpropagation|m","Derivadas de funciones compuestas|m","Computational graphs|m"]},{"n":"Optimización","l":["Funciones convexas — por qué importan|m","Descenso de gradiente: intuición geométrica|m","Batch, Stochastic, Mini-batch SGD|m","Learning rate y scheduling|m","Momentum, RMSProp, Adam|m","Regularización L1/L2 — geometría|m","3Blue1Brown: Essence of Calculus|r"]}]},{"id":"m13","ph":3,"cl":"#dc2626","nm":"Probabilidad","dr":"Mes 11","ic":"🎲","ss":[{"n":"Fundamentos","l":["Axiomas de probabilidad|m","Probabilidad condicional|m","Probabilidad total|m","Teorema de Bayes — derivación|m","Independencia|m"]},{"n":"Variables Aleatorias","l":["Discretas: PMF, CDF|m","Continuas: PDF, CDF|m","Esperanza y varianza|m","Momentos|m","Función generadora de momentos|m"]},{"n":"Distribuciones","l":["Bernoulli y Binomial|m","Poisson|m","Geométrica|m","Uniforme (discreta y continua)|m","Exponencial y Gamma|m","Normal (Gaussiana)|m","Distribución conjunta|m"]},{"n":"Teoremas Fundamentales","l":["Ley de grandes números|m","Teorema del Límite Central|m","Desigualdades: Markov, Chebyshev|m"]}]},{"id":"m14","ph":3,"cl":"#b91c1c","nm":"Estadística Inferencial","dr":"Mes 11","ic":"📏","ss":[{"n":"Estimación","l":["Estimadores: sesgo, consistencia, eficiencia|m","Maximum Likelihood Estimation (MLE)|m","Método de momentos|m","Intervalos de confianza|m","Bootstrap|m"]},{"n":"Pruebas de Hipótesis","l":["H₀ vs H₁, errores Tipo I y II|m","t-test (una muestra, dos muestras, pareado)|m","Chi-cuadrado|m","ANOVA|m","P-valores: interpretación correcta|m","Potencia estadística y tamaño de muestra|m","Corrección de Bonferroni|m","Euclidean Distance y métricas de distancia|m","Least Squares Fit: derivación|m","Causation vs Correlation: diseño experimental|m"]},{"n":"Regresión Estadística","l":["Regresión lineal simple|m","Regresión lineal múltiple|m","Supuestos y diagnóstico|m","Correlación múltiple y R²|m","Regresión no paramétrica (intro)|m"]}]},{"id":"m14b","ph":3,"cl":"#f87171","nm":"A/B Testing y Experimentación","dr":"Mes 12","ic":"🧪","ss":[{"n":"Diseño de Experimentos","l":["Diseño de experimentos controlados","Grupos de control y tratamiento","Aleatorización y asignación","Tamaño de muestra necesario|m","Potencia estadística (power analysis)|m","Multiple testing: corrección Bonferroni|m"]},{"n":"A/B Testing","l":["Framework completo de A/B test","Métricas primarias y guardrail","Duración mínima del test|m","Análisis de resultados","P-valor vs efecto práctico","Bayesian A/B testing (intro)|m","A/A testing para validación","Common pitfalls: peeking, SRM"]},{"n":"Causalidad","l":["Correlación vs Causalidad (profundización)|m","Causal Inference: conceptos|m","Propensity Score Matching|m","Difference-in-Differences|m","Instrumental Variables (intro)|m"]}]},{"id":"m15","ph":4,"cl":"#a78bfa","nm":"Machine Learning — Supervisado","dr":"Meses 12–13","ic":"🤖","ss":[{"n":"Conceptos Fundamentales ML","l":["Supervised vs Unsupervised vs Reinforcement","Training & Test Data: split strategies","Inputs, Features, Attributes, Labels","Prediction, Classifier, Regressor","Lift y Gain charts","Variables Numéricas vs Categóricas","Overfitting/Underfitting (profundización)","Collaborative Filtering: recomendación"]},{"n":"Regresión","l":["Regresión Lineal: derivación OLS|m","Ridge (L2) y Lasso (L1)|m","ElasticNet|m","Regresión Polinomial","SVR (Support Vector Regression)","Métricas: MSE, RMSE, MAE, R²"]},{"n":"Clasificación","l":["Regresión Logística: MLE, cross-entropy|m","KNN y maldición de dimensionalidad","SVM: margen máximo, kernels|m","Árboles de Decisión: entropía, Gini","Random Forest: bagging, OOB","Gradient Boosting: XGBoost internamente|m","LightGBM y CatBoost","Naive Bayes"]},{"n":"Métricas de Clasificación","l":["Accuracy, Precision, Recall, F1","AUC-ROC y AUC-PR","Log Loss","Matriz de confusión","Curvas ROC y PR"]},{"n":"Evaluación y Validación","l":["Sesgo vs Varianza tradeoff|m","K-Fold, Stratified, Time Series Split","Learning curves y validation curves","Overfitting vs underfitting"]},{"n":"Bayesian Machine Learning","l":["Bayesian vs Frequentist: filosófico|m","Prior, Likelihood, Posterior|m","Bayesian Linear Regression|m","Gaussian Processes (intro)|m","MCMC: Markov Chain Monte Carlo|m","PyMC3 / Stan: herramientas"]}]},{"id":"m16","ph":4,"cl":"#7c3aed","nm":"Feature Engineering","dr":"Mes 13","ic":"🔧","ss":[{"n":"Encoding","l":["One-Hot Encoding","Target Encoding","Ordinal Encoding","Label Encoding","Binary Encoding"]},{"n":"Scaling y Transformación","l":["StandardScaler, MinMaxScaler, RobustScaler","Log transformation, Box-Cox, Yeo-Johnson","Polynomial features","Binning y discretización"]},{"n":"Manejo de Missing Values","l":["Análisis MCAR/MAR/MNAR","Imputación: media, mediana, KNN, MICE","Indicador de missing como feature"]},{"n":"Feature Selection","l":["Mutual information","Feature importance (tree-based)","Recursive Feature Elimination (RFE)","Variance threshold","Correlación filter"]},{"n":"Feature Creation","l":["Interacciones entre features","Agregaciones (rolling, lag)","Date features extraction","Text features (TF-IDF, count)","Domain knowledge features"]}]},{"id":"m17","ph":4,"cl":"#6d28d9","nm":"Pipelines y Tuning","dr":"Mes 14","ic":"⚙️","ss":[{"n":"Scikit-learn Pipelines","l":["Pipeline y ColumnTransformer","Custom transformers (BaseEstimator)","Pipelines encadenados","Serialización con joblib"]},{"n":"Hyperparameter Tuning","l":["GridSearchCV","RandomizedSearchCV","Optuna — optimización bayesiana","Early stopping"]},{"n":"Explicabilidad","l":["SHAP values — teoría y práctica","LIME","Partial Dependence Plots","Feature importance global vs local"]},{"n":"🏗️ PROYECTO A","l":["Predicción End-to-End con pipeline|p","5+ features manuales justificadas|p","5+ algoritmos con CV estratificada|p","SHAP values obligatorio|p","Reporte con curvas ROC/PR|p"]}]},{"id":"m18","ph":4,"cl":"#5b21b6","nm":"ML No Supervisado","dr":"Mes 14","ic":"🔮","ss":[{"n":"Clustering","l":["K-Means: algoritmo EM|m","K-Means: implementación y método del codo","DBSCAN: densidad, eps, min_samples","Clustering Jerárquico y dendrogramas","Gaussian Mixture Models","Silhouette Score y Gap Statistic"]},{"n":"Reducción de Dimensionalidad","l":["PCA: derivación con autovalores/SVD|m","PCA: implementación e interpretación","t-SNE","UMAP","Kernel PCA"]},{"n":"🏗️ PROYECTO B","l":["Segmentación de clientes completa|p","3 técnicas comparadas|p","Visualización 2D/3D con PCA/t-SNE|p","Recomendaciones marketing por segmento|p"]}]},{"id":"m19","ph":4,"cl":"#4c1d95","nm":"Series Temporales","dr":"Mes 15","ic":"📅","ss":[{"n":"Fundamentos","l":["Descomposición: tendencia, estacionalidad, residuo","Estacionariedad y test ADF|m","Autocorrelación (ACF) y parcial (PACF)","Diferenciación"]},{"n":"Modelos Clásicos","l":["ARIMA: identificación, estimación, diagnóstico","SARIMA","Exponential Smoothing (Holt-Winters)","Prophet de Facebook"]},{"n":"ML para Series Temporales","l":["Feature engineering temporal","XGBoost para forecasting","Validación: Time Series Split","Métricas: MAE, MAPE, RMSE"]}]},{"id":"m20","ph":5,"cl":"#ec4899","nm":"NLP — Procesamiento de Lenguaje","dr":"Mes 15","ic":"💬","ss":[{"n":"Fundamentos NLP","l":["Tokenización, stemming, lemmatización","Bag of Words","TF-IDF","Stop words y normalización","NLTK: toolkit completo para NLP","Association Rules y Market Basket Analysis","Vocabulary Mapping"]},{"n":"Modelos NLP","l":["Sentiment Analysis","Text Classification","Word Embeddings: Word2Vec, GloVe","Named Entity Recognition (NER)","Weka para text mining"]},{"n":"NLP Moderno (Intro)","l":["Transformers — intuición","BERT conceptual","Hugging Face — uso práctico","Fine-tuning básico"]}]},{"id":"m21","ph":5,"cl":"#f43f5e","nm":"Deep Learning","dr":"Meses 16–17","ic":"🧠","ss":[{"n":"Redes Neuronales Fundamentos","l":["Perceptrón — historia y matemática|m","MLP: capas ocultas, funciones de activación|m","Backpropagation: derivación completa|m","Funciones de pérdida|m","Batch normalization|m","Dropout — regularización|m"]},{"n":"Frameworks","l":["PyTorch: tensors, autograd, nn.Module","Keras/TensorFlow: Sequential, Functional API","Training loop completo","Callbacks y checkpointing"]},{"n":"CNN (Redes Convolucionales)","l":["Convolución y pooling|m","Arquitecturas: LeNet, VGG, ResNet","Transfer Learning","Data augmentation","Clasificación de imágenes|p"]},{"n":"RNN y Secuencias","l":["RNN vanilla y problema del gradiente|m","LSTM y GRU|m","Seq2Seq","Attention mechanism|m"]},{"n":"Temas Avanzados","l":["Stochastic Gradient Descent avanzado|m","Overfitting en DL y soluciones","Hyperparameter tuning en DL","Mixed precision training"]}]},{"id":"m21b","ph":5,"cl":"#c084fc","nm":"AutoML y LLMs","dr":"Mes 18","ic":"🤖","ss":[{"n":"AutoML","l":["¿Qué es AutoML y cuándo usarlo?","Auto-sklearn","H2O AutoML","TPOT","Google AutoML (cloud)","Limitaciones de AutoML"]},{"n":"Large Language Models","l":["Transformers: arquitectura completa|m","Attention mechanism en detalle|m","GPT: generación de texto","BERT: comprensión de texto","Fine-tuning de LLMs","RAG: Retrieval Augmented Generation","Prompt Engineering: técnicas avanzadas","LangChain / LlamaIndex (intro)","Embeddings y vector databases","Evaluación de LLMs"]},{"n":"IA Generativa","l":["Diffusion Models (conceptual)","GANs: intuición y aplicaciones|m","Multimodal AI (texto + imagen)","Ética en IA Generativa"]}]},{"id":"m21c","ph":5,"cl":"#a855f7","nm":"Ética y Bias en ML","dr":"Mes 18","ic":"⚖️","ss":[{"n":"Bias y Fairness","l":["Tipos de bias: selection, measurement, confirmation","Bias en datos de entrenamiento","Fairness metrics: demographic parity, equal opportunity","Disparate impact","Mitigación de bias: pre/in/post-processing"]},{"n":"IA Responsable","l":["Transparencia y explicabilidad","Privacy: differential privacy, federated learning","Regulación: EU AI Act, GDPR","Model cards y datasheets","Auditoría de modelos"]}]},{"id":"m22","ph":5,"cl":"#db2777","nm":"R Programming","dr":"Mes 17 (paralelo)","ic":"📊","ss":[{"n":"R Fundamentos","l":["R Setup e instalación de R Studio","Variables, expressions, tipos","Vectores, matrices, arrays","Factors y data frames","Listas y subsetting","Reading CSV y raw data","Manipulación de data frames","Funciones y install packages"]},{"n":"Tidyverse","l":["dplyr: filter, mutate, summarise, group_by","tidyr: pivot_longer, pivot_wider","ggplot2: gramática de gráficos","purrr: programación funcional","stringr y lubridate"]},{"n":"Estadística en R","l":["Tests estadísticos en R","Regresión lineal y logística","ANOVA en R","Shiny para dashboards interactivos"]},{"n":"R para Data Science","l":["ggplot2: gramática de gráficos completa","D3.js, ggplot2, Shiny: ecosystem","IBM SPSS y RapidMiner (conceptual)","Knime y Weka: herramientas alternativas"]}]},{"id":"m22b","ph":5,"cl":"#f97316","nm":"Big Data y Spark","dr":"Mes 17","ic":"🔥","ss":[{"n":"Fundamentos Big Data","l":["¿Qué es Big Data? Las 5 V's","Map Reduce: concepto y funcionamiento|m","Ecosistema Hadoop: componentes","HDFS: almacenamiento distribuido","Name Nodes y Data Nodes","Data Replication Principles","YARN: gestión de recursos"]},{"n":"Herramientas Hadoop","l":["Hive: SQL sobre Hadoop","Pig: scripting para datos","Sqoop: carga de datos a HDFS","Flume: ingesta de logs","Zookeeper: coordinación","Avro: serialización de datos"]},{"n":"Apache Spark","l":["Spark vs MapReduce: por qué Spark gana","RDDs y DataFrames en Spark","PySpark: Spark con Python","Spark SQL","Spark MLlib: ML distribuido","Spark Streaming (intro)"]},{"n":"Bases de Datos NoSQL","l":["MongoDB: documentos (repaso avanzado)","Cassandra: columnar distribuida","Neo4j: grafos","Redis: clave-valor en memoria","Cuándo usar cada tipo de NoSQL"]},{"n":"🏗️ PROYECTO","l":["Pipeline PySpark con dataset grande|p","Spark SQL: análisis distribuido|p","Comparar rendimiento Pandas vs Spark|p"]}]},{"id":"m23b","ph":5,"cl":"#ea580c","nm":"Data Engineering","dr":"Mes 18","ic":"🔧","ss":[{"n":"Data Ingestion","l":["Formatos de datos: CSV, JSON, Parquet, Avro, ORC","Data Sources & Acquisition","Data Discovery: encontrar datasets","APIs como fuentes de datos","Web scraping como ingesta (repaso)","Streaming vs Batch ingestion","Sampling y Stratified Sampling|m"]},{"n":"Data Munging / Wrangling","l":["Data Scrubbing: limpieza sistemática","Handling Missing Values: estrategias completas","Denoising: filtrado de ruido","Binning Sparse Values","Normalization y Standardization","Dimensionality Reduction (repaso PCA)|m","Outlier detection y tratamiento","Data validation y quality checks"]},{"n":"Data Integration","l":["Data Fusion: combinar fuentes","Transformation & Enrichment","ETL vs ELT: diferencias y cuándo usar","Data Pipelines con Airflow (intro)","Data Lakehouse vs Data Warehouse","Google OpenRefine para limpieza"]},{"n":"Fundamentos DB Avanzados","l":["Álgebra Relacional|m","OLAP vs OLTP","Multidimensional Data Models","Sharding y particionamiento","CAP Theorem|m","Data Warehousing concepts","Reporting vs BI vs Analytics"]}]},{"id":"m23","ph":6,"cl":"#06b6d4","nm":"Linux y Línea de Comandos","dr":"Mes 17","ic":"🐧","ss":[{"n":"Comandos Esenciales","l":["Navegación: cd, ls, pwd, find","Archivos: cat, head, tail, grep, sed, awk","Permisos: chmod, chown","Pipes y redirección"]},{"n":"Scripting Bash","l":["Variables y condicionales","Loops y funciones","Cron jobs","SSH y trabajo remoto"]}]},{"id":"m24","ph":6,"cl":"#0891b2","nm":"Docker","dr":"Mes 17","ic":"🐳","ss":[{"n":"Fundamentos","l":["Qué es Docker y por qué para ML","Dockerfile: FROM, RUN, COPY, CMD","docker build, run, exec, ps","Volumes y networking"]},{"n":"Docker para ML","l":["Dockerfile best practices ML","Multi-stage builds","Docker Compose","Container registry"]}]},{"id":"m25","ph":6,"cl":"#0e7490","nm":"MLOps y Despliegue","dr":"Meses 18–19","ic":"🚀","ss":[{"n":"Experiment Tracking","l":["MLflow: tracking, params, metrics, artifacts","MLflow Model Registry","Weights & Biases","DVC para datasets"]},{"n":"APIs de Predicción","l":["FastAPI: crear API completa","Documentación Swagger automática","Validación con Pydantic","Flask como alternativa","Django REST framework (intro)"]},{"n":"Demos y Frontends","l":["Streamlit: apps interactivas","Gradio: interfaces rápidas","Panel y Voila"]},{"n":"Testing","l":["pytest para ML pipelines","Test unitarios, integración","Validación de datos con Great Expectations","CI/CD con GitHub Actions"]},{"n":"Modern Data Stack","l":["dbt: transformaciones SQL en producción","dbt models, tests, documentation","Orchestration: Airflow vs Prefect vs Dagster","Data observability: Monte Carlo, Great Expectations","Feature stores: Feast","ML monitoring: Evidently, Whylabs"]}]},{"id":"m26","ph":6,"cl":"#155e75","nm":"Cloud Computing","dr":"Mes 19","ic":"☁️","ss":[{"n":"AWS","l":["S3: almacenamiento de datos","EC2: cómputo","SageMaker: entrenamiento y deploy","Lambda: serverless"]},{"n":"Google Cloud","l":["GCS: almacenamiento","Compute Engine: VMs","Vertex AI: ML platform","BigQuery: SQL a escala"]},{"n":"Azure","l":["Azure Blob Storage","Azure ML Studio","Azure Functions","Databricks (Spark intro)"]}]},{"id":"m27","ph":6,"cl":"#134e4a","nm":"🏗️ CAPSTONE: Sistema ML Producción","dr":"Mes 20","ic":"⭐","ss":[{"n":"Proyecto Final","l":["Definir problema real de negocio|p","Pipeline E2E: ingesta → producción|p","Experiment tracking en MLflow|p","API FastAPI + documentación Swagger|p","Dockerfile funcional|p","Demo Streamlit/Gradio|p","Tests con pytest|p","CI/CD con GitHub Actions|p","README exhaustivo con arquitectura|p","Deploy a cloud (AWS/GCP)|p"]}]}];
+const PH=[{"n":1,"name":"Fundamentos","cl":"#f59e0b","desc":"Excel · Estadística · SQL · Power BI"},{"n":2,"name":"Programación","cl":"#a78bfa","desc":"Python · Git · NumPy · Pandas · Viz · Scraping"},{"n":3,"name":"Matemáticas","cl":"#ef4444","desc":"Álgebra Lineal · Cálculo · Probabilidad · Inferencia"},{"n":4,"name":"Machine Learning","cl":"#7c3aed","desc":"Supervisado · Feature Eng · Pipelines · No Supervisado · Series"},{"n":5,"name":"Avanzado","cl":"#ec4899","desc":"NLP · Deep Learning · R · Big Data · Data Engineering"},{"n":6,"name":"Producción","cl":"#06b6d4","desc":"Linux · Docker · MLOps · Cloud · Capstone"}];
+const RES={"m01":[{"p":"Udemy","c":"u","t":"Excel De Cero a Experto","d":"+4.7★ +50hrs"},{"p":"YouTube","c":"y","t":"Excel y Más","d":"Excel avanzado"},{"p":"YouTube","c":"y","t":"El Tío Tech","d":"Power Query paso a paso"}],"m02":[{"p":"YouTube","c":"y","t":"Matemáticas profe Alex","d":"Estadística con rigor"},{"p":"Coursera","c":"c","t":"Statistics (Stanford)","d":"Subtítulos español"},{"p":"Otro","c":"o","t":"Khan Academy Estadística","d":"Gratuito"}],"m03":[{"p":"Udemy","c":"u","t":"SQL Completo","d":"+4.6★"},{"p":"YouTube","c":"y","t":"Soy Dalto — SQL","d":"Desde cero"},{"p":"Kaggle","c":"k","t":"Intro + Advanced SQL","d":"Interactivo"}],"m04":[{"p":"Udemy","c":"u","t":"Power BI – Análisis y BI","d":"+40hrs DAX avanzado"},{"p":"Udemy","c":"u","t":"DAX de cero a avanzado","d":"Especializado"},{"p":"Otro","c":"o","t":"Microsoft Learn PL-300","d":"Certificación gratis"}],"m05":[{"p":"Udemy","c":"u","t":"Python para Data Science","d":"+4.6★ +40hrs"},{"p":"YouTube","c":"y","t":"Código Facilito","d":"Python y Pandas"},{"p":"Kaggle","c":"k","t":"Kaggle Learn Python","d":"Gratis"}],"m07":[{"p":"YouTube","c":"y","t":"3Blue1Brown ⭐","d":"Essence of Linear Algebra"},{"p":"Coursera","c":"c","t":"Math for ML (Imperial)","d":"3 cursos"}],"m11":[{"p":"YouTube","c":"y","t":"3Blue1Brown ⭐","d":"OBLIGATORIO Linear Algebra"},{"p":"Otro","c":"o","t":"Khan Academy Álgebra","d":"Gratis"}],"m12":[{"p":"YouTube","c":"y","t":"3Blue1Brown ⭐","d":"Essence of Calculus"},{"p":"Otro","c":"o","t":"Khan Academy Cálculo","d":"Gratis"}],"m13":[{"p":"YouTube","c":"y","t":"StatQuest ⭐","d":"Probabilidad visual"},{"p":"Otro","c":"o","t":"Khan Academy Probabilidad","d":"Gratis"}],"m15":[{"p":"Udemy","c":"u","t":"ML de A a Z","d":"+4.5★ +40hrs"},{"p":"YouTube","c":"y","t":"StatQuest ⭐ ML","d":"Todos los algoritmos"},{"p":"Coursera","c":"c","t":"ML Andrew Ng ⭐","d":"El más importante"}],"m21":[{"p":"Udemy","c":"u","t":"Deep Learning A-Z","d":"NN con Keras"},{"p":"YouTube","c":"y","t":"DotCSV","d":"Deep Learning español"},{"p":"Coursera","c":"c","t":"DL Specialization","d":"5 cursos"}],"m25":[{"p":"YouTube","c":"y","t":"Pelado Nerd","d":"Docker, cloud español"},{"p":"Coursera","c":"c","t":"MLOps DeepLearning.AI","d":"Referencia MLOps"}]};
+const FC=[{"c":"Estadística","q":"¿Diferencia entre varianza poblacional y muestral?","a":"Poblacional divide entre N, muestral entre N-1 (corrección de Bessel)."},{"c":"SQL","q":"¿WHERE vs HAVING?","a":"WHERE filtra ANTES de GROUP BY. HAVING filtra DESPUÉS y puede usar funciones de agregación."},{"c":"SQL","q":"¿ROW_NUMBER vs RANK vs DENSE_RANK?","a":"ROW_NUMBER: secuencial (1,2,3). RANK: empates, salta (1,1,3). DENSE_RANK: empates, no salta (1,1,2)."},{"c":"Álgebra","q":"¿Autovalores y autovectores geométricamente?","a":"Autovector = dirección que NO cambia bajo transformación, solo se escala. Autovalor = factor de escala."},{"c":"Cálculo","q":"¿Qué es el gradiente?","a":"Vector de derivadas parciales → dirección de máximo crecimiento. En ML usamos el NEGATIVO para minimizar."},{"c":"ML","q":"¿Sesgo vs Varianza?","a":"Sesgo alto = muy simple (underfitting). Varianza alta = muy complejo (overfitting). Buscamos balance."},{"c":"ML","q":"¿Por qué NO accuracy en datos desbalanceados?","a":"Modelo que predice siempre clase mayoritaria tiene accuracy alto pero no detecta clase importante. Usa F1, AUC-ROC."},{"c":"DAX","q":"¿Qué hace CALCULATE?","a":"Evalúa expresión MODIFICANDO el contexto de filtro. Puedes agregar/remover filtros con ALL/ALLEXCEPT."},{"c":"ML","q":"¿Regularización L1 vs L2?","a":"L1 (Lasso): sparsity, feature selection. L2 (Ridge): encoge sin eliminar. ElasticNet combina ambas."},{"c":"Pandas","q":"¿.apply() vs .transform()?","a":"apply() puede cambiar forma. transform() DEBE retornar mismo tamaño → ideal para columnas agregadas."},{"c":"MLOps","q":"¿Por qué Docker para ML?","a":"Empaqueta modelo + dependencias reproduciblemente. Elimina 'en mi máquina funciona'."},{"c":"Estadística","q":"¿Qué es un p-valor?","a":"Probabilidad de datos tan extremos ASUMIENDO H₀ verdadera. NO es probabilidad de que H₀ sea cierta."},{"c":"ML","q":"¿Cómo funciona XGBoost?","a":"Árboles secuenciales donde cada uno aprende de ERRORES del anterior. Regularización + shrinkage + subsampling."},{"c":"DL","q":"¿Qué es backpropagation?","a":"Algoritmo para calcular gradientes de la pérdida respecto a cada peso, usando la regla de la cadena hacia atrás."},{"c":"Probabilidad","q":"¿Teorema del Límite Central?","a":"Media muestral → Normal cuando n→∞, sin importar distribución original. Regla: n≥30."},{"c":"NLP","q":"¿TF-IDF qué mide?","a":"Term Frequency × Inverse Document Frequency. Palabras frecuentes en un doc pero raras globalmente tienen TF-IDF alto."}];
+const QZ=[{"q":"Calcular % de cada producto sobre total. ¿Qué Window Function?","o":["ROW_NUMBER()","SUM(ventas) OVER() en denominador","RANK()","LAG()"],"c":1,"e":"SUM OVER() calcula total global."},{"q":"98% accuracy, 12% recall clase positiva. ¿Problema?","o":["Overfitting","Dataset desbalanceado","Learning rate alto","Poca regularización"],"c":1,"e":"Predice siempre clase mayoritaria."},{"q":"¿Diferencia entre SUMX y SUM en DAX?","o":["Ninguna","SUM columna, SUMX itera fila a fila","SUMX más rápido","SUM con filtros"],"c":1,"e":"SUMX itera tabla, evalúa expresión por fila."},{"q":"¿Por qué SGD mejor que batch a veces?","o":["Converge más rápido","Mínimo global garantizado","Ruido ayuda escapar mínimos locales","Solo usa menos memoria"],"c":2,"e":"Ruido actúa como regularización."},{"q":"50 features. ¿Cuándo PCA?","o":["Siempre","Nunca","Multicolinealidad alta","Solo modelos lineales"],"c":2,"e":"PCA reduce con multicolinealidad. Trees manejan redundancia."},{"q":"Silhouette Score ≈ 0 indica:","o":["Clusters perfectos","Frontera entre clusters","Un solo cluster","No convergió"],"c":1,"e":"0 = punto en frontera."},{"q":"30% missing en feature importante. ¿Qué hacer?","o":["Eliminar feature","Imputar media","Analizar MCAR/MAR/MNAR","Eliminar filas"],"c":2,"e":"Primero analizar patrón, luego decidir estrategia."},{"q":"¿Cuándo usar Random Forest vs XGBoost?","o":["RF siempre","XGBoost siempre","RF para rapidez e interpretabilidad, XGB para máximo rendimiento","Son idénticos"],"c":2,"e":"RF es más rápido y fácil de tunear. XGBoost generalmente mejor rendimiento con tuning."}];
+const IV=[{"c":"SQL","q":"Segundo salario más alto por departamento.","h":"DENSE_RANK con PARTITION BY."},{"c":"Stats","q":"Correlación vs causalidad con ejemplo.","h":"Variables confusoras."},{"c":"ML","q":"Modelo en producción bajó 15%. Diagnóstico.","h":"Data drift, concept drift, bugs pipeline."},{"c":"Python","q":"DataFrame 10GB no cabe en RAM.","h":"dtypes, chunking, Dask."},{"c":"Negocio","q":"Predecir churn. Estructura del proyecto.","h":"Métrica, ventana, features, baseline, deploy."},{"c":"SQL","q":"Retención usuarios mes a mes.","h":"Cohortes, CTEs."},{"c":"Stats","q":"A/B test p=0.06. PM dice lancemos.","h":"Potencia, tamaño muestra, efecto práctico."},{"c":"DL","q":"Explica backprop a no técnico.","h":"Ajustar perillas según error."},{"c":"MLOps","q":"Monitorear modelo en producción.","h":"Rendimiento, data drift, latencia, alertas."},{"c":"DAX","q":"¿Cuándo usar CALCULATE vs SUMX?","h":"CALCULATE modifica filtros, SUMX itera filas."}];
+const BADGES=[{"id":"f","i":"🌱","n":"Primera Lección","d":"1 lección","k":"done","v":1},{"id":"t","i":"🔟","n":"Decena","d":"10 lecciones","k":"done","v":10},{"id":"fi","i":"🔥","n":"En Serio","d":"50 lecciones","k":"done","v":50},{"id":"h","i":"💯","n":"Centenario","d":"100 lecciones","k":"done","v":100},{"id":"2h","i":"⚡","n":"Doble Centena","d":"200 lecciones","k":"done","v":200},{"id":"s3","i":"🏃","n":"Racha 3","d":"3 días","k":"streak","v":3},{"id":"s7","i":"🏆","n":"Semana","d":"7 días","k":"streak","v":7},{"id":"s30","i":"👑","n":"Mes","d":"30 días","k":"streak","v":30},{"id":"p5","i":"🍅","n":"5 Pomos","d":"5 pomodoros","k":"pomo","v":5},{"id":"p50","i":"🍅","n":"50 Pomos","d":"50 pomodoros","k":"pomo","v":50},{"id":"m20","i":"🔢","n":"Matemático","d":"20 math","k":"math","v":20},{"id":"fc50","i":"🃏","n":"Memoria","d":"50 flashcards","k":"fc","v":50},{"id":"all","i":"🎓","n":"Élite","d":"100% roadmap","k":"pct","v":100}];
+
+const SK='dp5';let S;
+function ld(){try{const r=localStorage.getItem(SK);if(r)return JSON.parse(r)}catch(e){}return{d:{},n:{},sc:[],jb:[],st:0,ld:null,pt:0,pT:0,pD:null,qP:0,fR:0,hm:{},srch:''}}
+function sv(){try{localStorage.setItem(SK,JSON.stringify(S))}catch(e){}}
+S=ld();
+function E(s){if(!s)return'';const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function lk(a,b,c){return a+'-'+b+'-'+c}
+function iD(a,b,c){return!!S.d[lk(a,b,c)]}
+
+// Parse lesson type from string format "name|type"
+function parseL(str){
+  if(!str)return{n:str,t:'v'};
+  const parts=str.split('|');
+  return{n:parts[0],t:parts[1]||'v'};
+}
+
+function sts(){
+  let T=0,D=0,mD=0,pD=0;
+  const phS={};
+  RM.forEach((m,mi)=>{
+    if(!phS[m.ph])phS[m.ph]={t:0,d:0};
+    m.ss.forEach((s,si)=>{s.l.forEach((x,li)=>{
+      const lp=parseL(x);
+      T++;phS[m.ph].t++;
+      if(iD(mi,si,li)){D++;phS[m.ph].d++;if(lp.t==='m')mD++;if(lp.t==='p')pD++}
+    })});
+  });
+  const pct=T?Math.round(D/T*100):0;
+  return{T,D,pct,phS,mD,pD};
+}
+function mst(mi){
+  const m=RM[mi];let t=0,d=0;
+  m.ss.forEach((s,si)=>{s.l.forEach((_,li)=>{t++;if(iD(mi,si,li))d++})});
+  return{t,d,p:t?Math.round(d/t*100):0};
+}
+function rec(){const d=new Date().toISOString().slice(0,10);S.hm[d]=(S.hm[d]||0)+1;sv()}
+function hmH(){
+  const t=new Date();const cs=[];
+  for(let i=168;i>=0;i--){const x=new Date(t);x.setDate(x.getDate()-i);cs.push({dt:x.toISOString().slice(0,10),ct:S.hm[x.toISOString().slice(0,10)]||0,dy:x.getDay()})}
+  const ws=[];let w=[];
+  for(let i=0;i<cs[0].dy;i++)w.push(null);
+  cs.forEach(c=>{w.push(c);if(w.length===7){ws.push(w);w=[]}});
+  if(w.length)ws.push(w);
+  let h='<div class="hm">';
+  ws.forEach(wk=>{h+='<div class="hm-c">';wk.forEach(c=>{
+    if(!c){h+='<div class="hm-d" style="opacity:0"></div>';return}
+    const lv=c.ct===0?'':c.ct<=2?'l1':c.ct<=5?'l2':c.ct<=10?'l3':'l4';
+    h+='<div class="hm-d '+lv+'" title="'+c.dt+': '+c.ct+'"></div>';
+  });h+='</div>'});
+  return h+'</div>';
+}
+
+// ═══ NAV ═══
+function tgSb(){document.getElementById('sb').classList.toggle('open');document.getElementById('ov').classList.toggle('show')}
+document.querySelectorAll('.sb-item').forEach(b=>{b.addEventListener('click',()=>{
+  document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');
+  document.getElementById('v-'+b.dataset.v).classList.add('active');
+  document.getElementById('sb').classList.remove('open');
+  document.getElementById('ov').classList.remove('show');
+  rV(b.dataset.v);
+})});
+function oM(id){document.getElementById(id).classList.add('open')}
+function cM(id){document.getElementById(id).classList.remove('open')}
+function uSb(){const s=sts();document.getElementById('sP').textContent=s.pct+'%';document.getElementById('sS').textContent='🔥 '+(S.st||0);const pd=S.pD===new Date().toDateString()?S.pt:0;document.getElementById('sPm').textContent='🍅 '+pd;const mp=document.getElementById('mP');if(mp)mp.textContent=s.pct+'%'}
+function rV(v){const map={dash:rDash,road:rRoad,res:rRes,proj:rProj,pomo:rPomo,fc:rFC,quiz:rQuiz,intv:rIntv,jobs:rJobs,sched:rSched,badges:rBdg,backup:rBackup};if(map[v])map[v]()}
+function goTo(v,mi){
+  document.querySelectorAll('.sb-item').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  const tab=document.querySelector('[data-v="'+v+'"]');
+  if(tab)tab.classList.add('active');
+  document.getElementById('v-'+v).classList.add('active');
+  rV(v);
+  if(mi!==undefined)setTimeout(function(){const e=document.getElementById('mod-'+mi);if(e){e.scrollIntoView({behavior:'smooth',block:'start'});e.classList.add('open')}},80);
+}
+
+// ═══ DASHBOARD ═══
+function rDash(){
+  const s=sts();
+  const da=Object.keys(S.hm).length||1;
+  const rate=s.D/da;const rem=s.T-s.D;
+  const eta=rate>0?Math.ceil(rem/rate):999;
+  const ed=new Date();ed.setDate(ed.getDate()+eta);
+  const es=rate>0?ed.toLocaleDateString('es-ES',{month:'short',year:'numeric'}):'—';
+
+  let phCards='';
+  PH.forEach(p=>{
+    const ps=s.phS[p.n]||{t:0,d:0};
+    const pp=ps.t?Math.round(ps.d/ps.t*100):0;
+    phCards+='<div class="card" style="border-left:3px solid '+p.cl+'"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.5rem"><div><span class="tag" style="background:'+p.cl+'18;color:'+p.cl+'">Fase '+p.n+'</span><div style="font-size:.88rem;margin-top:.2rem;font-weight:600">'+E(p.name)+'</div></div><div style="font-family:Fraunces,serif;font-size:1.3rem;font-weight:700;color:'+p.cl+'">'+pp+'%</div></div><div class="pbar-w"><div class="pbar" style="width:'+pp+'%;background:'+p.cl+'"></div></div><div style="font-size:.68rem;color:var(--t3);margin-top:.3rem">'+ps.d+'/'+ps.t+' · '+E(p.desc)+'</div></div>';
+  });
+
+  let modList='';
+  RM.forEach(function(m,mi){
+    const ms=mst(mi);
+    modList+='<div class="card" style="padding:.65rem .9rem;margin-bottom:.35rem;cursor:pointer;display:flex;align-items:center;gap:.65rem" onclick="goTo(&quot;road&quot;,'+mi+')"><div style="width:4px;height:26px;border-radius:2px;background:'+m.cl+';flex-shrink:0"></div><div style="flex:1;min-width:0"><div style="font-weight:600;font-size:.82rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+m.ic+' '+E(m.nm)+'</div><div style="font-size:.66rem;color:var(--t3)">'+m.dr+'</div></div><div style="width:90px;flex-shrink:0"><div class="pbar-w"><div class="pbar" style="width:'+ms.p+'%;background:'+m.cl+'"></div></div></div><div style="font-weight:700;font-size:.78rem;color:'+m.cl+';width:35px;text-align:right;flex-shrink:0">'+ms.p+'%</div></div>';
+  });
+
+  document.getElementById('v-dash').innerHTML=
+    '<h1 class="pt">De Cero a Data Scientist Experto</h1>'+
+    '<p class="ps">'+s.T+' lecciones · '+RM.length+' módulos · 6 fases · 20 meses</p>'+
+    '<div class="g4">'+
+      '<div class="card sc"><div class="si">📊</div><div class="sv">'+s.pct+'%</div><div class="sl">Progreso</div></div>'+
+      '<div class="card sc"><div class="si">✅</div><div class="sv">'+s.D+'<span style="font-size:.5em;color:var(--t3)">/'+s.T+'</span></div><div class="sl">Completadas</div></div>'+
+      '<div class="card sc"><div class="si">🔥</div><div class="sv">'+(S.st||0)+'</div><div class="sl">Racha</div></div>'+
+      '<div class="card sc"><div class="si">🎯</div><div class="sv" style="font-size:1.1rem">'+es+'</div><div class="sl">Meta estimada</div></div>'+
+    '</div>'+
+    '<div class="sh"><h2>Fases</h2></div>'+
+    '<div class="g2">'+phCards+'</div>'+
+    '<div class="sh"><h2>Actividad (6 meses)</h2></div>'+
+    '<div class="card" style="overflow-x:auto">'+hmH()+'</div>'+
+    '<div class="sh"><h2>'+RM.length+' Módulos</h2></div>'+modList;
+  uSb();
+}
+
+// ═══ ROADMAP ═══
+let cNK=null;
+function rRoad(){
+  // Search bar
+  let h='<h1 class="pt">Roadmap Completo</h1>';
+  h+='<div style="margin-bottom:1rem"><input class="fi" placeholder="🔍 Buscar lecciones..." oninput="filterRoad(this.value)" id="roadSearch" value="'+E(S.srch||'')+'"></div>';
+  let lastPh=0;
+  RM.forEach(function(m,mi){
+    if(m.ph!==lastPh){
+      lastPh=m.ph;
+      const ph=PH.find(function(p){return p.n===m.ph});
+      h+='<div style="display:flex;align-items:center;gap:.5rem;margin:1.5rem 0 .6rem"><div style="width:9px;height:9px;border-radius:50%;background:'+ph.cl+'"></div><h2 style="font-family:Fraunces,serif;font-size:1rem">Fase '+ph.n+' — '+E(ph.name)+'</h2></div>';
+    }
+    const ms=mst(mi);const C=2*Math.PI*15;
+    h+='<div class="mb" id="mod-'+mi+'">';
+    h+='<div class="mb-h" onclick="this.parentElement.classList.toggle(&quot;open&quot;)">';
+    h+='<div class="mb-cl" style="background:'+m.cl+'"></div>';
+    h+='<div class="mb-i"><div class="mb-t">'+m.ic+' '+E(m.nm)+'</div><div class="mb-m">'+m.dr+' · '+ms.d+'/'+ms.t+'</div></div>';
+    h+='<div class="mb-rn"><svg width="38" height="38" viewBox="0 0 38 38"><circle cx="19" cy="19" r="15" fill="none" stroke="var(--brd)" stroke-width="2.5"/><circle cx="19" cy="19" r="15" fill="none" stroke="'+m.cl+'" stroke-width="2.5" stroke-dasharray="'+C+'" stroke-dashoffset="'+(C*(1-ms.p/100))+'" stroke-linecap="round"/></svg><span class="rp">'+ms.p+'%</span></div>';
+    h+='<span class="mb-cv">▾</span></div>';
+    h+='<div class="mb-bd">';
+    m.ss.forEach(function(sec,si){
+      const sd=sec.l.filter(function(_,li){return iD(mi,si,li)}).length;
+      h+='<div class="sg">';
+      h+='<div class="sg-h" onclick="this.parentElement.classList.toggle(&quot;open&quot;)">';
+      h+='<span class="sg-cv">▸</span><span class="sg-n">'+E(sec.n)+'</span><span class="sg-ct">'+sd+'/'+sec.l.length+'</span></div>';
+      h+='<div class="sg-bd">';
+      sec.l.forEach(function(x,li){
+        const lp=parseL(x);
+        const dn=iD(mi,si,li);
+        const nk=lk(mi,si,li);
+        const hn=!!S.n[nk];
+        const bg=lp.t==='m'?'math':lp.t==='p'?'project':lp.t==='r'?'resource':lp.t==='c'?'checkpoint':'video';
+        const bl={m:'🔢',p:'🏗️',r:'📎',c:'✅',v:'📹'}[lp.t]||'📹';
+        const searchMatch=!S.srch||lp.n.toLowerCase().includes(S.srch.toLowerCase());
+        h+='<div class="ls '+(dn?'done':'')+'" style="'+(searchMatch?'':'display:none')+'">';
+        h+='<div class="ls-ck" onclick="tL('+mi+','+si+','+li+')">'+(dn?'✓':'')+'</div>';
+        h+='<span class="ls-nm" onclick="tL('+mi+','+si+','+li+')">'+E(lp.n)+'</span>';
+        h+='<button class="ls-nb '+(hn?'has':'')+'" onclick="oNt('+mi+','+si+','+li+')">📝</button>';
+        h+='<span class="ls-bg '+bg+'">'+bl+'</span></div>';
+      });
+      h+='</div></div>';
+    });
+    h+='</div></div>';
+  });
+  document.getElementById('v-road').innerHTML=h;
+}
+function filterRoad(v){S.srch=v;rRoad();document.getElementById('roadSearch').focus();const el=document.getElementById('roadSearch');el.setSelectionRange(v.length,v.length)}
+function tL(a,b,c){const k=lk(a,b,c);S.d[k]=!S.d[k];if(!S.d[k])delete S.d[k];if(S.d[k]){rec();const t=new Date().toDateString();if(S.ld!==t){const y=new Date();y.setDate(y.getDate()-1);S.st=S.ld===y.toDateString()?(S.st||0)+1:1;S.ld=t}}sv();rRoad();uSb()}
+function oNt(a,b,c){cNK=lk(a,b,c);const lp=parseL(RM[a].ss[b].l[c]);document.getElementById('ntT').textContent=lp.n;document.getElementById('ntTx').value=S.n[cNK]||'';oM('ntM')}
+function savNt(){if(cNK){const v=document.getElementById('ntTx').value.trim();if(v)S.n[cNK]=v;else delete S.n[cNK];sv();cM('ntM');rRoad()}}
+
+// ═══ RESOURCES ═══
+function rRes(){
+  let h='<h1 class="pt">Recursos en Español</h1><p class="ps">Cursos y canales por módulo</p>';
+  const rcCls={u:'rc-u',y:'rc-y',c:'rc-co',k:'rc-k',o:'rc-o'};
+  const rcNames={u:'Udemy',y:'YouTube',c:'Coursera',k:'Kaggle',o:'Otro'};
+  RM.forEach(function(m){
+    const rs=RES[m.id];if(!rs||!rs.length)return;
+    h+='<div class="sh"><h2 style="color:'+m.cl+'">'+m.ic+' '+E(m.nm)+'</h2></div>';
+    h+='<div class="res-g">';
+    rs.forEach(function(r){h+='<div class="res-c"><span class="rcp '+rcCls[r.c]+'">'+rcNames[r.c]+'</span><h4>'+E(r.t)+'</h4><p>'+E(r.d)+'</p></div>'});
+    h+='</div>';
+  });
+  document.getElementById('v-res').innerHTML=h;
+}
+
+// ═══ PROJECTS (extracted from roadmap) ═══
+function rProj(){
+  let h='<h1 class="pt">Proyectos de Portafolio</h1><p class="ps">Proyectos extraídos del roadmap — cada uno va a tu GitHub</p>';
+  RM.forEach(function(m,mi){
+    m.ss.forEach(function(sec){
+      if(!sec.n.includes('PROYECTO') && !sec.n.includes('CAPSTONE'))return;
+      const ph=PH.find(function(p){return p.n===m.ph});
+      h+='<div class="pj pp'+(m.ph<=2?1:2)+'"><span class="tag" style="background:'+m.cl+'18;color:'+m.cl+'">'+m.ic+' '+E(m.nm)+'</span>';
+      h+='<h3>'+E(sec.n)+'</h3>';
+      h+='<ul class="pj-dl">';
+      sec.l.forEach(function(x){const lp=parseL(x);h+='<li>'+E(lp.n)+'</li>'});
+      h+='</ul></div>';
+    });
+  });
+  document.getElementById('v-proj').innerHTML=h;
+}
+
+// ═══ POMODORO ═══
+let pSt='idle',pTm=25*60,pIn=null;
+function pad(n){return n.toString().padStart(2,'0')}
+function rPomo(){
+  const td=new Date().toDateString();const tc=S.pD===td?S.pt:0;
+  document.getElementById('v-pomo').innerHTML=
+    '<h1 class="pt">Pomodoro Timer</h1><p class="ps">25 min trabajo → 5 min descanso</p>'+
+    '<div class="card" style="max-width:360px;margin:0 auto;text-align:center;padding:1.75rem">'+
+    '<div class="pm-t" id="pD">'+pad(Math.floor(pTm/60))+':'+pad(pTm%60)+'</div>'+
+    '<div class="pm-l" id="pL">'+(pSt==='work'?'🔴 Trabajando':pSt==='break'?'🟢 Descanso':'Listo')+'</div>'+
+    '<div class="pm-dots">'+ [0,1,2,3].map(function(i){return '<div class="pm-dot '+(i<tc?'dn':i===tc&&pSt==='work'?'ac':'')+'"></div>'}).join('')+'</div>'+
+    '<div style="margin-top:1rem">'+(pSt==='idle'?'<button class="btn btn-a" onclick="sPomo()">▶ Iniciar</button>':'<button class="btn btn-r" onclick="xPomo()">⏹ Detener</button>')+'</div>'+
+    '</div><div class="card" style="max-width:360px;margin:.6rem auto;text-align:center;font-size:.75rem;color:var(--t3)">Hoy: <b style="color:var(--t1)">'+tc+'</b> · Total: <b style="color:var(--t1)">'+(S.pT||0)+'</b></div>';
+}
+function sPomo(){pSt='work';pTm=25*60;clearInterval(pIn);pIn=setInterval(tPomo,1000);rPomo()}
+function tPomo(){pTm--;if(pTm<=0){if(pSt==='work'){const t=new Date().toDateString();if(S.pD!==t){S.pt=0;S.pD=t}S.pt++;S.pT=(S.pT||0)+1;rec();sv();pSt='break';pTm=5*60}else{pSt='idle';pTm=25*60;clearInterval(pIn);pIn=null}}const d=document.getElementById('pD');if(d)d.textContent=pad(Math.floor(pTm/60))+':'+pad(pTm%60);const l=document.getElementById('pL');if(l)l.textContent=pSt==='work'?'🔴 Trabajando':pSt==='break'?'🟢 Descanso':'Listo';uSb()}
+function xPomo(){clearInterval(pIn);pIn=null;pSt='idle';pTm=25*60;rPomo()}
+
+// ═══ FLASHCARDS ═══
+let fI=0,fF=false;
+function rFC(){const c=FC[fI];document.getElementById('v-fc').innerHTML='<h1 class="pt">Repaso Espaciado</h1><p class="ps">Tarjeta '+(fI+1)+'/'+FC.length+'</p><div class="fc-w" onclick="fFl()"><div class="fc-cd '+(fF?'fl':'')+'" id="fC"><div class="fc-f fc-fr"><div class="tag tc">'+E(c.c)+'</div><div class="fc-q">'+E(c.q)+'</div><div style="font-size:.7rem;color:var(--t3);margin-top:auto;padding-top:.5rem">Clic para voltear</div></div><div class="fc-f fc-bk"><div style="color:var(--acc);font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;margin-bottom:.5rem">Respuesta</div><div class="fc-a">'+E(c.a)+'</div></div></div></div><div style="display:flex;gap:.4rem;justify-content:center;margin-top:1rem"><button class="btn btn-r btn-s" onclick="fRt()">😰 Difícil</button><button class="btn btn-g btn-s" onclick="fRt()">🤔 OK</button><button class="btn btn-a btn-s" onclick="fRt()">😎 Fácil</button></div><div style="display:flex;gap:.4rem;justify-content:center;margin-top:.6rem"><button class="btn btn-g btn-s" onclick="fI=(fI-1+FC.length)%FC.length;fF=false;rFC()">←</button><button class="btn btn-g btn-s" onclick="FC.sort(function(){return Math.random()-.5});fI=0;fF=false;rFC()">🔀</button><button class="btn btn-g btn-s" onclick="fI=(fI+1)%FC.length;fF=false;rFC()">→</button></div>'}
+function fFl(){fF=!fF;const c=document.getElementById('fC');if(c)c.classList.toggle('fl')}
+function fRt(){S.fR=(S.fR||0)+1;rec();sv();fI=(fI+1)%FC.length;fF=false;rFC()}
+
+// ═══ QUIZ ═══
+let qI=0,qA=false,qS=0,qAs=[];
+function rQuiz(){
+  if(qI>=QZ.length){document.getElementById('v-quiz').innerHTML='<h1 class="pt">Quiz Completado 🎉</h1><div class="card" style="max-width:420px;margin:1.5rem auto;text-align:center"><div style="font-family:Fraunces,serif;font-size:2.5rem;font-weight:800;color:'+(qS>=QZ.length*.8?'var(--green)':'var(--red)')+'">'+qS+'/'+QZ.length+'</div><p style="color:var(--t3);margin:.5rem 0 .85rem">'+(qS>=QZ.length*.8?'¡Excelente!':'Repasa conceptos')+'</p><button class="btn btn-a" onclick="qI=0;qS=0;qA=false;qAs=[];rQuiz()">🔄 Reiniciar</button></div>';if(qS===QZ.length){S.qP=(S.qP||0)+1;sv()}return}
+  const q=QZ[qI];
+  document.getElementById('v-quiz').innerHTML='<h1 class="pt">Quiz</h1><p class="ps">Pregunta '+(qI+1)+'/'+QZ.length+'</p><div class="qz-pg">'+QZ.map(function(_,i){return '<div class="qz-pip '+(i<qI?(qAs[i]?'dn':'wr'):i===qI?'cu':'')+'"></div>'}).join('')+'</div><div class="card" style="max-width:600px;margin:0 auto"><div class="qz-q">'+E(q.q)+'</div><div class="qz-o">'+q.o.map(function(o,i){return '<div class="qz-opt '+(qA?(i===q.c?'ok':'')+(qAs[qI]===false&&qAs[qI+'s']===i?' wr':'')+' dis':'')+'" onclick="aQ('+i+')"><span class="lt">'+'ABCD'[i]+'</span><span>'+E(o)+'</span></div>'}).join('')+'</div>'+(qA?'<div class="qz-ex">💡 '+E(q.e)+'</div><div style="text-align:right;margin-top:.75rem"><button class="btn btn-a" onclick="qI++;qA=false;rQuiz()">Siguiente →</button></div>':'')+'</div>';
+}
+function aQ(i){if(qA)return;qA=true;const ok=i===QZ[qI].c;if(ok)qS++;qAs[qI]=ok;qAs[qI+'s']=i;rec();sv();rQuiz()}
+
+// ═══ INTERVIEW ═══
+let iI=0,iT=0,iIn=null,iH=false;
+function rIntv(){const q=IV[iI];document.getElementById('v-intv').innerHTML='<h1 class="pt">Entrevistas</h1><p class="ps">Responde en voz alta.</p><div class="card" style="max-width:620px;margin:0 auto;text-align:center"><div class="tag tc" style="margin-bottom:.6rem">'+E(q.c)+'</div><div style="font-family:Fraunces,serif;font-size:1.7rem;font-weight:700;margin-bottom:.6rem" id="iD">'+pad(Math.floor(iT/60))+':'+pad(iT%60)+'</div><div class="qz-q">'+E(q.q)+'</div>'+(iH?'<div style="padding:.75rem;background:var(--bg);border-radius:var(--r);font-size:.8rem;color:var(--t2);margin-top:.75rem">💡 '+E(q.h)+'</div>':'')+'<div style="display:flex;gap:.4rem;justify-content:center;margin-top:1rem;flex-wrap:wrap">'+(iIn?'<button class="btn btn-r" onclick="sITm()">⏹</button>':'<button class="btn btn-a" onclick="stITm()">▶ Timer</button>')+'<button class="btn btn-g" onclick="iH=!iH;rIntv()">'+(iH?'Ocultar':'💡')+'</button><button class="btn btn-g" onclick="nxI()">→</button></div></div><div style="text-align:center;margin-top:.5rem;font-size:.72rem;color:var(--t3)">'+(iI+1)+'/'+IV.length+'</div>'}
+function stITm(){iT=0;iIn=setInterval(function(){iT++;const d=document.getElementById('iD');if(d)d.textContent=pad(Math.floor(iT/60))+':'+pad(iT%60)},1000);rIntv()}
+function sITm(){clearInterval(iIn);iIn=null;rIntv()}
+function nxI(){clearInterval(iIn);iIn=null;iT=0;iH=false;iI=(iI+1)%IV.length;rIntv()}
+
+// ═══ JOBS ═══
+function rJobs(){
+  if(!S.jb)S.jb=[];
+  const sl={applied:'Aplicada',interview:'Entrevista',offer:'Oferta',rejected:'Rechazada',pending:'En espera'};
+  const sc={applied:'jt-ap',interview:'jt-in',offer:'jt-of',rejected:'jt-re',pending:'jt-pe'};
+  document.getElementById('v-jobs').innerHTML=
+    '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem"><div><h1 class="pt">Aplicaciones</h1></div><button class="btn btn-a" onclick="oM(&quot;jobM&quot;)">+ Nueva</button></div>'+
+    '<div class="g4" style="margin:1rem 0">'+ ['Total '+S.jb.length,'Entrevistas '+S.jb.filter(function(j){return j.s==='interview'}).length,'Ofertas '+S.jb.filter(function(j){return j.s==='offer'}).length,'Aplicadas '+S.jb.filter(function(j){return j.s==='applied'}).length].map(function(x){var p=x.split(' ');return '<div class="card" style="text-align:center"><div style="font-family:Fraunces,serif;font-size:1.2rem;font-weight:700">'+p[1]+'</div><div style="font-size:.68rem;color:var(--t3)">'+p[0]+'</div></div>'}).join('')+'</div>'+
+    (S.jb.length?'<div class="card" style="overflow-x:auto"><table class="jt"><thead><tr><th>Empresa</th><th>Puesto</th><th>Estado</th><th>Fecha</th><th></th></tr></thead><tbody>'+S.jb.map(function(j,i){return '<tr><td style="font-weight:600">'+E(j.c)+'</td><td>'+E(j.r)+'</td><td><span class="jt-s '+sc[j.s]+'">'+sl[j.s]+'</span></td><td style="font-size:.72rem;color:var(--t3)">'+j.dt+'</td><td><button class="btn btn-s btn-r" onclick="S.jb.splice('+i+',1);sv();rJobs()">✕</button></td></tr>'}).join('')+'</tbody></table></div>':'<div class="card" style="text-align:center;padding:1.25rem;color:var(--t3)">Sin aplicaciones.</div>');
+}
+function savJob(){const c=document.getElementById('jC').value.trim();if(!c)return alert('Empresa');S.jb.push({c:c,r:document.getElementById('jR').value.trim(),s:document.getElementById('jSt').value,dt:new Date().toLocaleDateString('es-ES')});sv();cM('jobM');rJobs();document.getElementById('jC').value='';document.getElementById('jR').value=''}
+
+// ═══ SCHEDULE ═══
+const DY=['Lun','Mar','Mié','Jue','Vie','Sáb','Dom'];
+function rSched(){
+  if(!S.sc)S.sc=[];const ti=(new Date().getDay()+6)%7;let tm=0;
+  S.sc.forEach(function(b){var sh=parseInt(b.s.split(':')[0])*60+parseInt(b.s.split(':')[1]);var eh=parseInt(b.e.split(':')[0])*60+parseInt(b.e.split(':')[1]);tm+=eh-sh});
+  let g='';
+  DY.forEach(function(d,di){
+    var bs=S.sc.filter(function(b){return b.d===di}).sort(function(a,b){return a.s.localeCompare(b.s)});
+    g+='<div class="dy"><div class="dy-h '+(di===ti?'today':'')+'">'+d+'</div><div class="dy-b">';
+    bs.forEach(function(b,bi){var mod=RM.find(function(m){return m.nm===b.c});var cl=mod?mod.cl:'var(--t3)';
+      g+='<div class="sbl" style="border-left-color:'+cl+';background:'+cl+'12"><div class="st">'+b.s+'–'+b.e+'</div><div class="sl">'+E(b.c.split('—')[0])+'</div><button class="sx" onclick="rmSc('+di+','+bi+')">×</button></div>'});
+    g+='</div></div>';
+  });
+  document.getElementById('v-sched').innerHTML=
+    '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.6rem;margin-bottom:.85rem"><div><h1 class="pt">Horario</h1></div><button class="btn btn-a" onclick="oSchM()">+ Bloque</button></div>'+
+    '<div style="display:grid;grid-template-columns:1fr 240px;gap:.85rem"><div class="wk">'+g+'</div><div class="card"><div style="font-family:Fraunces,serif;font-size:.9rem;margin-bottom:.5rem">📅 Semana</div><div style="font-family:Fraunces,serif;font-size:1.8rem;font-weight:700;color:var(--acc)">'+Math.floor(tm/60)+'h '+tm%60+'m</div><div style="font-size:.7rem;color:var(--t3);margin-top:.2rem">planificadas</div><div style="margin-top:.85rem;padding-top:.6rem;border-top:1px solid var(--brd);font-size:.72rem;color:var(--t3);line-height:1.4">💡 Meta: 15–25 hrs/semana</div></div></div>';
+}
+function oSchM(){document.getElementById('sMd').innerHTML=RM.map(function(m){return '<option value="'+E(m.nm)+'">'+E(m.nm)+'</option>'}).join('');oM('schM')}
+function savSch(){var d=parseInt(document.getElementById('sD').value),s=document.getElementById('sSt').value,e=document.getElementById('sEn').value;if(!s||!e||s>=e)return alert('Horas inválidas');S.sc.push({d:d,s:s,e:e,c:document.getElementById('sMd').value,n:document.getElementById('sNt').value.trim()});sv();cM('schM');rSched()}
+function rmSc(dy,idx){var bs=S.sc.filter(function(b){return b.d===dy}).sort(function(a,b){return a.s.localeCompare(b.s)});S.sc=S.sc.filter(function(b){return b!==bs[idx]});sv();rSched()}
+
+// ═══ BADGES ═══
+function rBdg(){
+  var s=sts();var ctx={done:s.D,streak:S.st||0,pct:s.pct,math:s.mD,pomo:S.pT||0,fc:S.fR||0};
+  var earned=BADGES.filter(function(b){return ctx[b.k]>=b.v}).length;
+  document.getElementById('v-badges').innerHTML='<h1 class="pt">Logros</h1><p class="ps">'+earned+'/'+BADGES.length+' desbloqueados</p><div class="bg-g">'+BADGES.map(function(b){var e=ctx[b.k]>=b.v;return '<div class="bg-c '+(e?'earned':'')+'"><div class="bg-i">'+b.i+'</div><div class="bg-n">'+E(b.n)+'</div><div class="bg-dd">'+E(b.d)+'</div></div>'}).join('')+'</div>';
+}
+
+// ═══ BACKUP ═══
+function rBackup(){
+  var s=sts();
+  document.getElementById('v-backup').innerHTML=
+    '<h1 class="pt">Respaldo y Datos</h1><p class="ps">Exporta/importa tu progreso</p>'+
+    '<div class="backup-bar"><div class="info">📊 <b>'+s.D+'/'+s.T+'</b> lecciones · <b>'+s.pct+'%</b></div></div>'+
+    '<div class="g2"><div class="card" style="text-align:center;padding:1.25rem"><div style="font-size:1.8rem;margin-bottom:.4rem">💾</div><h3 style="font-family:Fraunces,serif;font-size:.95rem;margin-bottom:.25rem">Exportar</h3><p style="font-size:.75rem;color:var(--t3);margin-bottom:.85rem">Descarga JSON con todo tu progreso.</p><button class="btn btn-a" onclick="exportD()">📥 Descargar</button></div><div class="card" style="text-align:center;padding:1.25rem"><div style="font-size:1.8rem;margin-bottom:.4rem">📂</div><h3 style="font-family:Fraunces,serif;font-size:.95rem;margin-bottom:.25rem">Importar</h3><p style="font-size:.75rem;color:var(--t3);margin-bottom:.85rem">Restaura un respaldo.</p><label class="btn btn-w" style="cursor:pointer">📤 Cargar <input type="file" accept=".json" style="display:none" onchange="importD(event)"></label></div></div>'+
+    '<div class="card" style="margin-top:.85rem"><h3 style="font-family:Fraunces,serif;font-size:.9rem;margin-bottom:.6rem">📱 Instalar como App</h3><div style="font-size:.78rem;color:var(--t2);line-height:1.55"><p style="margin-bottom:.45rem"><b style="color:var(--acc)">iPhone:</b> Safari → Compartir → Agregar a inicio</p><p style="margin-bottom:.45rem"><b style="color:var(--acc)">Android:</b> Chrome → Menú → Instalar app</p><p style="margin-bottom:.45rem"><b style="color:var(--acc)">PC:</b> Chrome → Ícono instalar en barra</p><p style="margin-bottom:.45rem"><b style="color:var(--p1)">⚠️</b> Haz respaldo semanal</p><p><b style="color:var(--cyan)">🌐</b> Sube como index.html a GitHub Pages para acceder desde cualquier lugar</p></div></div>'+
+    '<div class="card" style="margin-top:.85rem"><h3 style="font-family:Fraunces,serif;font-size:.9rem;margin-bottom:.4rem;color:var(--red)">🗑️ Reset</h3><p style="font-size:.72rem;color:var(--t3);margin-bottom:.5rem">Borrar todo y empezar de cero.</p><button class="btn btn-r" onclick="resetAll()">Borrar Todo</button></div>';
+}
+function exportD(){var blob=new Blob([JSON.stringify(S,null,2)],{type:'application/json'});var url=URL.createObjectURL(blob);var a=document.createElement('a');a.href=url;a.download='datapath_'+new Date().toISOString().slice(0,10)+'.json';a.click();URL.revokeObjectURL(url)}
+function importD(e){var f=e.target.files[0];if(!f)return;if(!confirm('Reemplazará datos actuales. ¿Continuar?'))return;var r=new FileReader();r.onload=function(ev){try{S=JSON.parse(ev.target.result);sv();alert('✅ Restaurado');rDash()}catch(err){alert('Error: '+err.message)}};r.readAsText(f)}
+function resetAll(){if(!confirm('¿Borrar TODO?'))return;if(!confirm('Última chance.'))return;localStorage.removeItem(SK);S=ld();rDash();alert('Borrado.')}
+
+// ═══ INIT ═══
+rDash();
+
+</script>
+</body>
+</html>
